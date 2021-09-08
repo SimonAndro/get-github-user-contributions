@@ -13,15 +13,17 @@ $userNames = [
 ];
 
 foreach ($userNames as $u) {
-    //$markup = file_get_contents("https://github.com/" . $u); // fetch user github page
+    $markup = file_get_contents("https://github.com/" . $u); // fetch user github page
 
-    $url = "https://github.com/" . $u;
+    // $url = "https://github.com/" . $u;
 
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    $markup = curl_exec($curl);
-    curl_close($curl);
+    // $curl = curl_init($url);
+    // curl_setopt($curl, CURLOPT_URL, $url);
+    // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    // curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 1000); 
+    // curl_setopt($curl, CURLOPT_TIMEOUT, 400); //timeout in seconds
+    // $markup = curl_exec($curl);
+    // curl_close($curl);
 
     $doc = phpQuery::newDocumentHTML($markup); // create php query document
 
