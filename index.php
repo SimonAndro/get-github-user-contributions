@@ -1,5 +1,7 @@
 <?php
 
+require 'phpQuery/phpQuery.php'; //require php query
+
 /**
  * get github user contributions, avatar and nickname
  */
