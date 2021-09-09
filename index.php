@@ -57,19 +57,12 @@ foreach ($urls as $url) {
     $gitHubUser["nickname"] = $nickname;
     $gitHubUser["contributions"] = $contributions_this_week;
     $gitHubUser["totalContributions"] = array_sum(array_column($gitHubUser["contributions"],null));
+    $gitHubUser["url"] = $url;
     $gitHubUsers[] = $gitHubUser;
-
-    // print_r($gitHubUser); // github user data
 }
-    // print_r($gitHubUsers); // github user data
 
     $total_contributions = array_column($gitHubUsers, 'totalContributions');
     array_multisort($total_contributions, SORT_DESC, $gitHubUsers);
-    print_r("<br/>");
-    print_r("<br/>");
-    // print_r($gitHubUsers); // github user data
-
- 
 
 /**
  * Makes parallel curl requests at once
@@ -132,8 +125,9 @@ function multiple_threads_request($nodes)
                         $position++;
                 ?>
                 <li>
+                 
                     <div class="container">
-
+                    <a  target="_blank" style="text-decoration:none;" href="<?php echo $user["url"]  ?>" >
                         <div class="body-section bg-light mt-4">
                             <ul style="list-style: none; padding: 0">
                                 <li class="p-2 card shadow-sm mb-2">
@@ -214,6 +208,7 @@ function multiple_threads_request($nodes)
                                 </li>
                             </ul>
                         </div>
+                        </a>
                     </div>
                 </li>
                     <?php
@@ -223,3 +218,4 @@ function multiple_threads_request($nodes)
         </div>
     </div>
 </body>
+</html>
