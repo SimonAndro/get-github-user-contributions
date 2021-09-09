@@ -14,7 +14,7 @@ $userNames = [
     "admin368",
 ];
 
-//create an array of gthub user home page urls
+//create an array of github user home page urls
 $url = "https://github.com/";
 $urls = array();
 foreach( $userNames as $u)
