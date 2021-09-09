@@ -54,7 +54,6 @@ foreach ($urls as $url) {
  */
 function multiple_threads_request($nodes)
 {
-    set_time_limit(0);
 
     $mh = curl_multi_init();
     $curl_array = array();
@@ -64,7 +63,6 @@ function multiple_threads_request($nodes)
         curl_setopt($curl_array[$i], CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($curl_array[$i], CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curl_array[$i], CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl_array[$i], CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($curl_array[$i], CURLOPT_COOKIEFILE, "/tmp/cookie.txt");
         curl_setopt($curl_array[$i], CURLOPT_COOKIEJAR, "/tmp/cookie.txt");
         curl_multi_add_handle($mh, $curl_array[$i]);
