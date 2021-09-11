@@ -69,6 +69,7 @@ foreach ($urls as $url) {
  */
 function multiple_threads_request($nodes)
 {
+    set_time_limit(0);
 
     $mh = curl_multi_init();
     $curl_array = array();
@@ -78,6 +79,7 @@ function multiple_threads_request($nodes)
         curl_setopt($curl_array[$i], CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($curl_array[$i], CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curl_array[$i], CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl_array[$i], CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($curl_array[$i], CURLOPT_COOKIEFILE, "/tmp/cookie.txt");
         curl_setopt($curl_array[$i], CURLOPT_COOKIEJAR, "/tmp/cookie.txt");
         curl_multi_add_handle($mh, $curl_array[$i]);
@@ -100,23 +102,7 @@ function multiple_threads_request($nodes)
     return $res;
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
-    <title>U-byte-LeaderBoard</title>
-    <script src="https://u-byte.cn/scripts/jquery.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-</head>
-
-<body>
-    <div class="container">
-        <div class="body-section bg-light mt-4">
-            <ul id="cardsWrapper" style="list-style: none; padding: 0">
                 <?php
                     $position=0;
                     foreach ($gitHubUsers as $user):
@@ -212,8 +198,4 @@ function multiple_threads_request($nodes)
                     <?php
                 endforeach
                 ?>
-            </ul>
-        </div>
-    </div>
-</body>
-</html>
+
